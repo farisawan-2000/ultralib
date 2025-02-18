@@ -4,6 +4,7 @@ AlignAfterOpenBracket: Align
 SortIncludes: false
 ColumnLimit: 120
 PointerAlignment: Left
+AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AlignConsecutiveMacros: true

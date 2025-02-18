@@ -26,11 +26,9 @@ static volatile unsigned int* wport = (unsigned*)0xbff08000;
 static volatile unsigned int* piok = (unsigned*)PHYS_TO_K1(PI_STATUS_REG);
 
 static void rmonPutchar(char c) {
-    while (*piok & (PI_STATUS_DMA_BUSY | PI_STATUS_IO_BUSY)) {
-    }
+    while (*piok & (PI_STATUS_DMA_BUSY | PI_STATUS_IO_BUSY)) {}
 
-    while (!(*stat & 4)) {
-    }
+    while (!(*stat & 4)) {}
 
     *wport = c;
 }
