@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/devwizard64/libcart
+	branch = main
+	commit = 82b0278b854dc29fa1b7fe072090ece5676270f6
+	parent = 35c945334676a4b560277f2eb579b0d398c004d1
+	method = merge
+	cmdver = 0.4.6
