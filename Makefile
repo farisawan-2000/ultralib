@@ -40,24 +40,26 @@ endif
 
 # detect prefix for MIPS toolchain
 ifneq ($(call find-command,mips64-elf-ld),)
-  CROSS := mips64-elf-
+  CROSS_BASE := mips64-elf
 else ifneq ($(call find-command,mips-n64-ld),)
-  CROSS := mips-n64-
+  CROSS_BASE := mips-n64
 else ifneq ($(call find-command,mips64-ld),)
-  CROSS := mips64-
+  CROSS_BASE := mips64
 else ifneq ($(call find-command,mips-linux-gnu-ld),)
-  CROSS := mips-linux-gnu-
+  CROSS_BASE := mips-linux-gnu
 else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-  CROSS := mips64-linux-gnu-
+  CROSS_BASE := mips64-linux-gnu
 else ifneq ($(call find-command,mips64-none-elf-ld),)
-  CROSS := mips64-none-elf-
+  CROSS_BASE := mips64-none-elf
 else ifneq ($(call find-command,mips-ld),)
-  CROSS := mips-
+  CROSS_BASE := mips
 else ifneq ($(call find-command,mips-suse-linux-ld ),)
-  CROSS := mips-suse-linux-
+  CROSS_BASE := mips-suse-linux
 else
   $(error Unable to detect a suitable MIPS toolchain installed)
 endif
+
+CROSS = $(CROSS_BASE)-
 
 ifeq ($(filter clean,$(MAKECMDGOALS)),)
   $(info ==== Build Options ====)
@@ -154,6 +156,7 @@ $(BUILD_DIR)/src/gu/us2dex2_emu.o: GBIDEFINE :=
 $(BUILD_DIR)/src/sp/sprite.o: GBIDEFINE := -DF3D_GBI
 $(BUILD_DIR)/src/sp/spriteex.o: GBIDEFINE :=
 $(BUILD_DIR)/src/sp/spriteex2.o: GBIDEFINE :=
+$(BUILD_DIR)/src/ext/libcart/%.o: CFLAGS += -I/usr/$(CROSS_BASE)/include/ --std=gnu17
 
 #==============================================================================#
 # Compilation Recipes                                                          #
